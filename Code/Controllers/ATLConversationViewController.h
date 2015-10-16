@@ -261,6 +261,11 @@ typedef NS_ENUM(NSUInteger, ATLAvatarItemDisplayFrequency) {
  */
 - (void)sendMessage:(LYRMessage *)message;
 
+
+//Custom Jobr Func for Swift
+- (NSOrderedSet *)messagesForMediaAttachments:(NSArray *)mediaAttachments;
+- (LYRMessage *)messageForMessageParts:(NSArray *)parts MIMEType:(NSString *)MIMEType pushText:(NSString *)pushText;
+
 ///---------------------------
 /// @name Configuring Behavior
 ///---------------------------
