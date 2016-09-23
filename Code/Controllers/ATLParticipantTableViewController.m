@@ -180,6 +180,9 @@ NSString *const ATLParticipantTableViewControllerTitle = @"Participants";
 
 #pragma mark - UISearchDisplayDelegate
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 - (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
 {
     tableView.allowsMultipleSelection = self.allowsMultipleSelection;
@@ -204,6 +207,8 @@ NSString *const ATLParticipantTableViewControllerTitle = @"Participants";
     }];
     return NO;
 }
+
+#pragma GCC diagnostic pop
 
 #pragma mark - UITableViewDataSource
 
@@ -244,7 +249,7 @@ NSString *const ATLParticipantTableViewControllerTitle = @"Participants";
 {
     id<ATLParticipant> participant = [self participantForTableView:tableView atIndexPath:indexPath];
     [cell presentParticipant:participant withSortType:self.sortType shouldShowAvatarItem:YES];
-    if ([self.blockedParticipantIdentifiers containsObject:[participant participantIdentifier]]) {
+    if ([self.blockedParticipantIdentifiers containsObject:[participant userID]]) {
         NSBundle *resourcesBundle = ATLResourcesBundle();
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"block"  inBundle:resourcesBundle compatibleWithTraitCollection:nil]];
     }
