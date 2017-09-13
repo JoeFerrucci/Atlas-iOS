@@ -51,6 +51,7 @@ static NSString *const ATLAddressBarParticipantAttributeName = @"ATLAddressBarPa
 {
     [super viewDidLoad];
     self.shouldShowParticipantAvatars = NO;
+    self.presenceStatusEnabled = NO;
     self.defaultCellTitleColor = ATLBlueColor();
     self.sortType = ATLParticipantPickerSortTypeFirstName;
     self.rowHeight = 56.f;
@@ -230,7 +231,7 @@ static NSString *const ATLAddressBarParticipantAttributeName = @"ATLAddressBarPa
 - (void)configureCell:(UITableViewCell<ATLParticipantPresenting> *)participantCell atIndexPath:(NSIndexPath *)indexPath
 {
     id<ATLParticipant> participant = self.participants[indexPath.row];
-    [participantCell presentParticipant:participant withSortType:self.sortType shouldShowAvatarItem:self.shouldShowParticipantAvatars];
+    [participantCell presentParticipant:participant withSortType:self.sortType shouldShowAvatarItem:self.shouldShowParticipantAvatars presenceStatusEnabled:self.presenceStatusEnabled];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -481,7 +482,8 @@ static NSString *const ATLAddressBarParticipantAttributeName = @"ATLAddressBarPa
     ATLAddressBarTextView *textView = self.addressBarView.addressBarTextView;
     NSMutableAttributedString *attributedString = [NSMutableAttributedString new];
 
-    NSAttributedString *attributedName = [[NSAttributedString alloc] initWithString:participant.displayName attributes:@{ATLAddressBarPartAttributeName: ATLAddressBarNamePart, ATLAddressBarPartAttributeName: ATLAddressBarNamePart, NSForegroundColorAttributeName: textView.addressBarHighlightColor}];
+    NSString *participantName = participant.displayName?: @"Unknown Participant";
+    NSAttributedString *attributedName = [[NSAttributedString alloc] initWithString:participantName attributes:@{ATLAddressBarPartAttributeName: ATLAddressBarNamePart, ATLAddressBarPartAttributeName: ATLAddressBarNamePart, NSForegroundColorAttributeName: textView.addressBarHighlightColor}];
     [attributedString appendAttributedString:attributedName];
 
     NSAttributedString *attributedDelimiter = [[NSAttributedString alloc] initWithString:@", " attributes:@{ATLAddressBarPartAttributeName: ATLAddressBarDelimiterPart, NSForegroundColorAttributeName: [UIColor grayColor]}];
