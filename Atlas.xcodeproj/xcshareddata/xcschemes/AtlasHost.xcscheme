@@ -77,7 +77,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "253C29A41C3C9D7100ED1549"
+            BlueprintIdentifier = "3DA2FABA1F1E9D9F00E890FA"
             BuildableName = "Atlas.framework"
             BlueprintName = "Atlas"
             ReferencedContainer = "container:Atlas.xcodeproj">
