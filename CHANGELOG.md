@@ -1,5 +1,11 @@
 # Atlas Changelog
 
+## 1.1.6
+
+### Bug Fixes
+
+* Fixes an error where Xcode 10 complains about multiple commands produced for Info.plist by renaming to something else.
+
 ## 1.1.5
 
 ### Bug Fixes
